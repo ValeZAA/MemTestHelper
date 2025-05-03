@@ -303,10 +303,12 @@ As far as I know, tCL, tRCD, tRP, and possibly tRFC can (or can not) see voltage
  
 ### Temperatures and Its Effect on Stability
 * Generally, the hotter your RAM is, the less stability it will have at higher frequencies and/or tighter timings.
-* The tRFC timings are very dependent on temperatures, as they are related to capacitor leakage, which is affected by temperature. Therefore, higher temperatures will need higher tRFC values. tRFC2 and tRFC4 are timings that activate when the operating temperature of DRAM hits 85 °C. Below these temperatures, these timings don't do anything.
-* Generally speaking, RAM is temperature sensitive and its ideal range is ~30-40 °C. However, some ICs may be able to withstand higher temperatures, so YMMV.
+* The tRFC timings are very dependent on temperatures, as they are related to capacitor leakage, which is affected by temperature. Therefore, higher temperatures will need higher tRFC values. tRFC2 and tRFC4 are timings that activate when RAM enters x2 and x4 refresh modes. On AMD where those modes do not work it is still possible to have effects due to the tRFC2/4 affecting other timings, https://www.overclock.net/posts/28592362/
+* Internal considerations in x1, x2 and x4 modes exist at below 105°C and below 95° and below 85°C, see 16gb_ddr4_sdram.pdf, page 146, Table 52.
+* Generally speaking, RAM is temperature sensitive and its ideal range is ~30-40 °C. However, some ICs may be able to withstand higher temperatures, so YMMV. Micron datatsheet talks about 3 types of memory, two types of automotive RAM with Extended temperature range (one type below 105°C and another below 95°C), normal memory that works below 85°
 * M8E, on the other hand, doesn't seem to be as strongly temperature sensitive, demonstrated by [buildzoid](https://www.youtube.com/watch?v=OeHEtULQg3Q).
 * You might find that you're stable when running a memory test yet crash while gaming. This is because your CPU and/or GPU dump heat in the case, raising the RAM temperatures in the process. Thus, it is good to stress test your GPU while running a memory test to simulate stability while gaming.
+* DDR5 decreased the refresh rate to 32 ms from 64 ms when operating at and below 85°C. It also removed tRFC4 timing.
  
 ## Integrated Memory Controller (IMC)
 ### Intel IMC
